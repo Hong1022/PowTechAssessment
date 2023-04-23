@@ -1,5 +1,4 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import axios from 'axios';
 import { createHash } from 'crypto';
 import { nanoid } from 'nanoid';
 
@@ -15,20 +14,8 @@ export class RhmService {
     return { hash };
   }
 
-  async verifyLastCharacter() {
+  async verifyLastCharacter(hash: string) {
     let lastChar: string;
-
-    // Catch the response from endpoint #1
-    const createdHash = await axios
-      .get(
-        `${
-          process.env.API_SITE_URL ?? 'http://localhost:3000/'
-        }/api/rhm/generate-hash`,
-      )
-      .then((res) => {
-        return res;
-      });
-    const hash = await createdHash.data?.hash;
 
     // Verify is the response from endpoint #1 is hash(256) string
     const isHash256 = this.isHash256(hash);
