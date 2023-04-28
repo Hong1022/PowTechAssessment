@@ -24,7 +24,7 @@ export class RhmService {
     lastChar = hash.charAt(hash.length - 1);
 
     if (isNaN(Number(lastChar)))
-      return `${hash}\nThe last 1 character are '${lastChar}'. This is a alpabet. Does not Pass.`;
+      return `${hash}\nThe last 1 character are '${lastChar}'. This is an alpabet. Does not Pass.`;
 
     if (Number(lastChar) % 2 === 0)
       return `${hash}\nThe last 1 character are '${lastChar}'. This is an even number. Does not Pass`;
