@@ -18,12 +18,7 @@ export class RhmService {
     let lastChar: string;
 
     // Verify is the response from endpoint #1 is hash(256) string
-    const isHash256 = this.isHash256(hash);
-
-    if (!isHash256)
-      throw new BadRequestException(
-        'The response provided by Endpoint #1 is not a hash string.',
-      );
+    await this.isHash256(hash);
 
     // Verify is the last character of hash string
     lastChar = hash.charAt(hash.length - 1);
